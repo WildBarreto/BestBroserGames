@@ -1,12 +1,26 @@
 import "./app.css";
-import { SearchBar } from "./components/searchBar";
+import { CardGame } from "./components/cardGame";
+import { SearchBar } from './components/searchBar';
 
 function App() {
   return (
-    <div className="bg-slate-900">
-      <SearchBar />
-      <div className="w-full h-2 bg-lime-300" />
-    </div>
+    <>
+    <SearchBar/>
+      
+      <div className="mt-44">
+        <h1 className="text-slate-50 ml-32  relative text-3xl">
+          Bem-vindo à <span className="text-primary">Best Browser Games</span> a
+          estrela-guia do seu mundo dos jogos
+        </h1>
+      </div>
+      <CardGame />
+      <CardGame />
+      <CardGame />
+      <CardGame /> <CardGame />
+      <CardGame />
+      <CardGame />
+      
+    </>
   );
 }
 
