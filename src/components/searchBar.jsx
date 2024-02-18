@@ -17,13 +17,13 @@ export function SearchBar() {
             name=""
             placeholder="Encontre um jogo"
             id=""
-            className="w-[60%] ml-auto text-1xl bg-slate-800 font-semibold  px-2 py-1 outline-none tracking-tight rounded-l-md "
+            className="w-[60%] ml-auto text-lg h-10 bg-slate-800 font-semibold  px-2 py-1 outline-none tracking-tight rounded-l-md "
           />
-          <button className=" bg-slate-800 mr-auto h-8 rounded-r-md ">
-            <IoMdSearch className=" size-8 mx-0 hover:bg-lime-300 hover:rounded-lg hover:text-slate-600" />
+          <button className=" bg-slate-800 mr-auto h-10 rounded-r-md ">
+            <IoMdSearch className=" size-9 mx-0 hover:bg-lime-300 hover:rounded-lg hover:text-slate-600" />
           </button>
         </form>
-        <button className="bg-primary rounded-md mr-10 w-20 h-8 text-slate-800 font-semibold hover:bg-lime-500 ">
+        <button className="bg-primary rounded-md mr-10 w-20 h-9 text-slate-800 font-semibold hover:bg-lime-500 ">
           Login
         </button>
       </div>
