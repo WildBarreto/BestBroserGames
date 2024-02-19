@@ -1,26 +1,27 @@
 import "./app.css";
-import { Cadastro } from "./pages/cadastro";
+import { PageGame } from "./components/pageGame";
+//import { Cadastro } from "./pages/cadastro";
 //import { Carrossel } from "./components/carrosel";
-//import { SearchBar } from "./components/searchBar";
-
+import { SearchBar } from "./components/searchBar";
 
 function App() {
   return (
     <>
-    <Cadastro/>
-    {/*
+      {/*<Cadastro/>*/}
+
       <SearchBar />
-      <div className="mt-32 mb-12 flex justify-center ">
+      <PageGame/>
+      {/*<div className="mt-32 mb-12 flex justify-center ">
         <h1 className="ml-32 text-2xl">
           Bem-vindo à <span className="text-primary">Best Browser Games</span> a
-          estrela-guia do seu mundo dos jogos
+          estrela-guia do seu mundo dos jogos.
         </h1>
       </div>
 
-      
-
       <Carrossel />
-      <Carrossel />  */}
+      <Carrossel />*/}
+
+     
     </>
   );
 }

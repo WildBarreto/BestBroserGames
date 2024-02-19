@@ -10,7 +10,7 @@ export function CardGame() {
           Red Dead Redemption 
         </h1>
         <h2 className="text-slate-50 ml-2 mt-2 text-sm">Shooter</h2>
-        <span className="text-slate-50 mt-2 ml-20 text-1xl font-semibold">6</span>
+        <span className="text-slate-50 mt-2 ml-20 text-1xl font-semibold">5</span>
         <FaStar className="text-yellow-300 mt-3 ml-1 size-3.5" />
       </div>
     </div>
