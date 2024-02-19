@@ -1,4 +1,4 @@
-//import Lupa from "../assets/ic_outline-search.svg";
+
 import Logo from "../assets/vscode-icons_file-type-gamemaker.svg";
 
 import { IoMdSearch } from "react-icons/io";

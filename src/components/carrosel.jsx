@@ -9,12 +9,12 @@ export function Carrossel() {
   const handleLeftClick = (e) => {
     e.preventDefault();
     console.log(carousel.current.offsetWidth)
-    carousel.current.scrollLeft += carousel.current.offsetWidth;
+    carousel.current.scrollLeft -= carousel.current.offsetWidth;
   };
 
   const handleRightClick = (e) => {
     e.preventDefault();
-    carousel.current.scrollLeft -= carousel.current.offsetWidth;
+    carousel.current.scrollLeft += carousel.current.offsetWidth;
   };
 
   return (
@@ -35,11 +35,8 @@ export function Carrossel() {
       </buttoon>
       <div
         ref={carousel}
-        className="flex overflow-x-hidden  scroll-smooth w-[80%] mx-auto"
+        className="flex overflow-x-hidden scroll-smooth w-[80%] mx-auto"
       >
-        <CardGame />
-        <CardGame />
-        <CardGame />
         <CardGame />
         <CardGame />
         <CardGame />

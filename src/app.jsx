@@ -1,10 +1,14 @@
 import "./app.css";
-import { Carrossel } from "./components/carrosel";
-import { SearchBar } from "./components/searchBar";
+import { Cadastro } from "./pages/cadastro";
+//import { Carrossel } from "./components/carrosel";
+//import { SearchBar } from "./components/searchBar";
+
 
 function App() {
   return (
     <>
+    <Cadastro/>
+    {/*
       <SearchBar />
       <div className="mt-32 mb-12 flex justify-center ">
         <h1 className="ml-32 text-2xl">
@@ -16,7 +20,7 @@ function App() {
       
 
       <Carrossel />
-      <Carrossel />
+      <Carrossel />  */}
     </>
   );
 }
