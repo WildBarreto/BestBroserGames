@@ -1,5 +1,5 @@
 import Logo from "../assets/vscode-icons_file-type-gamemaker.svg";
-import { Login } from "../components/login";
+//import { Login } from "../components/login";
 //import { FormCadastro } from "../components/formCadastro";
 
 export function Cadastro() {
@@ -18,7 +18,7 @@ export function Cadastro() {
         </div>
         <div className="w-full h-0.5 bg-primary mb-4" />
         {/* <FormCadastro />*/}
-        <Login/>
+        {/*<Login/>*/}
       </div>
     </>
   );

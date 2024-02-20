@@ -21,21 +21,21 @@ export function Carrossel() {
     <>
       <h2 className="ml-32 mt-10 text-2xl">Recomendações</h2>
       <div className="ml-32 w-24 h-1 bg-yellow-300 mb-10" />
-      <buttoon
+      <button
         onClick={handleLeftClick}
         className="cursor-pointer absolute  mt-32 left-20 z-10"
       >
         <FaChevronLeft className="size-7 text-slate-500" />
-      </buttoon>
-      <buttoon
+      </button>
+      <button
         onClick={handleRightClick}
         className="cursor-pointer absolute  mt-32 right-20 z-10"
       >
         <FaChevronRight className="size-7  text-slate-500" />
-      </buttoon>
+      </button>
       <div
         ref={carousel}
-        className="flex overflow-x-hidden scroll-smooth w-[80%] mx-auto"
+        className="flex overflow-x-hidden overflow-y-hidden scroll-smooth w-[80%] mx-auto"
       >
         <CardGame />
         <CardGame />

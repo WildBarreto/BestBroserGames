@@ -4,6 +4,8 @@ import Logo from "../assets/vscode-icons_file-type-gamemaker.svg";
 import { IoMdSearch } from "react-icons/io";
 
 export function SearchBar() {
+
+  
   return (
     <>
       <div className="mx-auto  flex flex-row h-20 w-full items-center bg-slate-900 fixed z-50 top-0">
