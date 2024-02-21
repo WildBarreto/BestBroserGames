@@ -1,11 +1,37 @@
-
+import { useEffect, useState } from "react";
 import Logo from "../assets/vscode-icons_file-type-gamemaker.svg";
 
 import { IoMdSearch } from "react-icons/io";
 
 export function SearchBar() {
+  const [termoBusca, setTermoBusca] = useState("");
+  const [resultados, setResultados] = useState([]);
 
-  
+  useEffect(() => {
+    if (termoBusca.trim() !== "") {
+      // Aqui você precisará substituir a URL pela sua própria URL da API
+      const url = `http://localhost:3000/games`;
+
+      // Envie a requisição usando fetch
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          // Filtra os resultados com base no termo de busca
+          const resultadosFiltrados = data.filter((jogo) =>
+            jogo.title.toLowerCase().includes(termoBusca.toLowerCase())
+          );
+          // Atualize os resultados da busca
+          setResultados(resultadosFiltrados);
+        })
+        .catch((error) => {
+          console.error("Erro ao buscar dados:", error);
+          setResultados([]); // Limpe os resultados em caso de erro
+        });
+    } else {
+      // Se o termo de busca estiver vazio, limpe os resultados
+      setResultados([]);
+    }
+  }, [termoBusca]);
   return (
     <>
       <div className="mx-auto  flex flex-row h-20 w-full items-center bg-slate-900 fixed z-50 top-0">
@@ -16,11 +42,12 @@ export function SearchBar() {
         >
           <input
             type="text"
-            name=""
+            value={termoBusca}
             placeholder="Encontre um jogo"
-            id=""
+            onChange={(e) => setTermoBusca(e.target.value)}
             className="w-[60%] ml-auto text-lg h-10 bg-slate-800 font-semibold  px-2 py-1 outline-none tracking-tight rounded-l-md "
           />
+
           <button className=" bg-slate-800 mr-auto h-10 rounded-r-md ">
             <IoMdSearch className=" size-9 mx-0 hover:bg-lime-300 hover:rounded-lg hover:text-slate-600" />
           </button>
@@ -29,6 +56,17 @@ export function SearchBar() {
           Login
         </button>
       </div>
+      {resultados.length > 0 && (
+        <ul className="flex flex-col  w-full  absolute">
+          {resultados.map((resultado) => (
+            <li key={resultado.id} className="mx-auto text-xl bg-slate-400 font-bold">
+              {resultado.id}
+              {resultado.title}
+              <img src={resultado.thumbnail} alt="" />
+            </li>
+          ))}
+        </ul>
+      )}
       <div className="w-full h-2 bg-primary  fixed z-50 top-20" />
     </>
   );
