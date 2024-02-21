@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Logo from "../assets/vscode-icons_file-type-gamemaker.svg";
 
 import { IoMdSearch } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 export function SearchBar() {
   const [termoBusca, setTermoBusca] = useState("");
@@ -35,7 +36,10 @@ export function SearchBar() {
   return (
     <>
       <div className="mx-auto  flex flex-row h-20 w-full items-center bg-slate-900 fixed z-50 top-0">
-        <img src={Logo} alt="Logo" className="ml-6" />
+        <Link to="/">
+          {" "}
+          <img src={Logo} alt="Logo" className="ml-6" />
+        </Link>
         <form
           action=""
           className="w-[70%] mx-auto flex  items-center bg-slate-900"
@@ -53,19 +57,27 @@ export function SearchBar() {
           </button>
         </form>
         <button className="bg-primary rounded-md mr-10 w-20 h-9 text-slate-800 font-semibold hover:bg-lime-500 ">
-          Login
+          <Link to="/cadastro">Login</Link>
         </button>
       </div>
       {resultados.length > 0 && (
-        <ul className="flex flex-col  w-full  absolute">
-          {resultados.map((resultado) => (
-            <li key={resultado.id} className="mx-auto text-xl bg-slate-400 font-bold">
-              {resultado.id}
-              {resultado.title}
-              <img src={resultado.thumbnail} alt="" />
-            </li>
-          ))}
-        </ul>
+        <Link to="/game">
+          <ul className="flex flex-col  w-full  absolute">
+            {resultados.map((resultado) => (
+              <li
+                key={resultado.id}
+                className="mx-auto text-xl bg-slate-400 font-bold rounded-md mb-4"
+              >
+                <img
+                  src={resultado.thumbnail}
+                  alt=""
+                  className="rounded-t-md"
+                />
+                <h1 className="ml-4">{resultado.title}</h1>
+              </li>
+            ))}
+          </ul>
+        </Link>
       )}
       <div className="w-full h-2 bg-primary  fixed z-50 top-20" />
     </>

@@ -14,7 +14,7 @@ export function CardGame() {
   if (!data || !data.length) return null;
 
   return (
-    <div className="flex flex-row ">
+    <div className="flex flex-row snap-none ">
       {data.map((item) => {
         const { id, title, thumbnail, genre } = item;
         return (

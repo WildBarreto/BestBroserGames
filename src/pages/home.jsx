@@ -1,10 +1,10 @@
-import "./app.css";
+import "../styles/app.css";
 //import { PageGame } from "./components/pageGame";
 //import { Cadastro } from "./pages/cadastro";
-import { Carrossel } from "./components/carrosel";
-import { SearchBar } from "./components/searchBar";
+import { Carrossel } from "../components/carrosel";
+import { SearchBar } from "../components/searchBar";
 
-function App() {
+export default function Home() {
   return (
     <>
       {/*<Cadastro/>*/}
@@ -19,11 +19,6 @@ function App() {
       </div>
 
       <Carrossel />
-      <Carrossel />
-
-     
     </>
   );
 }
-
-export default App;

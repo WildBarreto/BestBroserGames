@@ -1,10 +1,64 @@
+import { useState } from "react";
+
 export function FormCadastro() {
+  const [formData, setFormData] = useState({
+    nome: "",
+    email: "",
+    senha: "",
+    data_nascimento: "",
+    pais: "",
+    estado: "",
+  });
+
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch("http://localhost:3000/usuarios", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        console.log("Dados salvos com sucesso!");
+
+        // Limpar os campos após o envio
+        setFormData({
+          nome: "",
+          email: "",
+          senha: "",
+          data_nascimento: "",
+          pais: "",
+          estado: "",
+        });
+
+        alert("Cadastro realizado com sucesso!");
+      } else {
+        throw new Error("Erro ao salvar os dados");
+      }
+    } catch (error) {
+      console.error("Erro ao salvar os dados:", error);
+      alert(
+        "Erro ao realizar o cadastro. Por favor, tente novamente mais tarde."
+      );
+    }
+  };
   return (
-    <form action="">
+    <form onSubmit={handleSubmit}>
       <label htmlFor="" className="flex flex-col w-full font-semibold">
         Nome completo:
         <input
           type="text"
+          name="nome"
+          value={formData.nome}
+          onChange={handleChange}
+          placeholder="Nome Completo"
           className="w-full mt-2 text-lg h-10 bg-slate-700 font-semibold  px-2 py-1  rounded-md "
         />
       </label>
@@ -12,6 +66,10 @@ export function FormCadastro() {
         Email:
         <input
           type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="E-mail"
           className="w-full mt-2 text-lg h-10 bg-slate-700 font-semibold  px-2 py-1  rounded-md "
         />
       </label>
@@ -19,7 +77,11 @@ export function FormCadastro() {
       <label htmlFor="" className="flex my-2 flex-col w-full font-semibold">
         Senha:
         <input
-          type="email"
+          type="password"
+          name="senha"
+          value={formData.senha}
+          onChange={handleChange}
+          placeholder="Senha"
           className="w-full mt-2 text-lg h-10 bg-slate-700 font-semibold  px-2 py-1  rounded-md "
         />
       </label>
@@ -27,8 +89,10 @@ export function FormCadastro() {
         Data de nascimento:
         <input
           type="date"
-          id="data_nascimento"
           name="data_nascimento"
+          value={formData.data_nascimento}
+          onChange={handleChange}
+          placeholder="Data de Nascimento"
           className="w-full mt-2 text-lg h-10 bg-slate-700 font-semibold  px-2 py-1  rounded-md "
           required
         />
@@ -37,7 +101,9 @@ export function FormCadastro() {
         <label htmlFor="" className="flex my-2 flex-col w-full font-semibold">
           País:
           <select
-            name="country"
+            name="pais"
+            value={formData.pais}
+            onChange={handleChange}
             className="w-full mt-2 text-lg h-10 overflow-y-scroll bg-slate-700 font-semibold  px-2 py-1  rounded-md "
           >
             <optgroup label="América do Sul">
@@ -116,7 +182,9 @@ export function FormCadastro() {
         >
           Estados:
           <select
-            name="state"
+            name="estado"
+            value={formData.estado}
+            onChange={handleChange}
             className="w-full mt-2  text-lg h-10 bg-slate-700 font-semibold  px-2 py-1  rounded-md "
           >
             <option value="AC">Acre</option>
@@ -150,7 +218,10 @@ export function FormCadastro() {
         </label>
       </div>
 
-      <button className="w-full h-9 mt-3 bg-primary rounded-md  text-slate-800 font-semibold hover:bg-lime-500 ">
+      <button
+        type="submit"
+        className="w-full h-9 mt-3 bg-primary rounded-md  text-slate-800 font-semibold hover:bg-lime-500 "
+      >
         Cadastrar-se
       </button>
     </form>

@@ -2,13 +2,14 @@ import { useRef } from "react";
 import { CardGame } from "./cardGame";
 
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export function Carrossel() {
   const carousel = useRef(null);
 
   const handleLeftClick = (e) => {
     e.preventDefault();
-    console.log(carousel.current.offsetWidth)
+    console.log(carousel.current.offsetWidth);
     carousel.current.scrollLeft -= carousel.current.offsetWidth;
   };
 
@@ -35,19 +36,12 @@ export function Carrossel() {
       </button>
       <div
         ref={carousel}
-        className="flex overflow-x-hidden overflow-y-hidden scroll-smooth w-[80%] mx-auto"
+        className="flex overflow-x-hidden overflow-y-hidden scroll-smooth w-[80%] mx-auto "
+        style={{ scrollSnapType: "x mandatory" }}
       >
-        <CardGame />
-        <CardGame />
-        <CardGame />
-        <CardGame />
-        <CardGame />
-        <CardGame />
-        <CardGame />
-        <CardGame />
-        <CardGame />
-        <CardGame />
-        <CardGame />
+        <Link to="game">
+          <CardGame />
+        </Link>
       </div>
     </>
   );

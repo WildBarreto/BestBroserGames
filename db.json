@@ -1,4 +1,16 @@
 {
+  "usuarios": [
+    {
+      "id": "d88c",
+      "nome": "wild",
+      "email": "me@example.com",
+      "senha": "123",
+      "data_nascimento": "2024-02-14",
+      "pais": "BR",
+      "estado": "",
+      "dataNascimento": "2024-02-02"
+    }
+  ],
   "games": [
     {
       "id": 540,
