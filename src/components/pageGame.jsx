@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { SearchBar } from "./searchBar";
 
 import { useParams } from "react-router-dom";
+import { Coments } from "./coments";
+import { Description } from "./description";
 import { StarRatings } from "./starRatings";
 import { StatusRating } from "./statusRating";
 
@@ -10,6 +12,8 @@ export function PageGame() {
   const botaoSobreRef = useRef(null);
   const [gameData, setGameData] = useState(null);
   const [rating, setRating] = useState(0);
+  const [showDescription, setShowDescription] = useState(true);
+  const [showComents, setShowComents] = useState(false);
 
   const { id } = useParams();
 
@@ -40,6 +44,16 @@ export function PageGame() {
     console.log(newRating);
   };
 
+  const handleShowDescription = () => {
+    setShowDescription(true);
+    setShowComents(false);
+  };
+
+  const handleShowComents = () => {
+    setShowDescription(false);
+    setShowComents(true);
+  };
+
   return (
     <>
       <SearchBar />
@@ -63,23 +77,25 @@ export function PageGame() {
           <div className="flex flex-row mt-5 ml-6  w-[93%]">
             <button
               ref={botaoSobreRef}
+              onClick={handleShowDescription}
               className="bg-slate-800 w-60 mr-2 rounded-md focus:text-primary"
             >
               Sobre
             </button>
-            <button className="bg-slate-800  w-60 rounded-md focus:text-primary">
+            <button
+              onClick={handleShowComents}
+              className="bg-slate-800  w-60 rounded-md focus:text-primary"
+            >
               Avaliações
             </button>
           </div>
-
-          <div className="flex mt-6">
-            <h2 className="ml-6 text-md font-semibold">Genero:</h2>
-            <p className="ml-3 text-primary">{gameData.genre}</p>
-          </div>
-          <h2 className="ml-6 mt-6 text-md font-semibold">Descrição:</h2>
-          <p className="ml-6 w-[35rem] text-justify">
-            {gameData.short_description}
-          </p>
+          {showDescription && (
+            <Description
+              genre={gameData.genre}
+              description={gameData.short_description}
+            />
+          )}
+          {showComents && <Coments />}
         </div>
 
         <div className=" mr-0  bg-bl  w-[30%]">
@@ -143,7 +159,3 @@ export function PageGame() {
     </>
   );
 }
-
-/*PageGame.propTypes = {
-  id: PropTypes.string.isRequired,
-};*/
