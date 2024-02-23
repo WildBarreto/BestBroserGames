@@ -4,6 +4,7 @@ import { SearchBar } from "./searchBar";
 
 import { useParams } from "react-router-dom";
 import { StarRatings } from "./starRatings";
+import { StatusRating } from "./statusRating";
 
 export function PageGame() {
   const botaoSobreRef = useRef(null);
@@ -80,17 +81,62 @@ export function PageGame() {
             {gameData.short_description}
           </p>
         </div>
-        
-        <div className=" mr-0   w-[30%]">
-          <div className="flex flex-col rounded-full size-44 ml bg-slate-700 m-auto  font-semibold border-solid border-8 border-lime-400">
-            <h1 className=" text-4xl mx-auto mt-auto">100%</h1>
-            <h2 className="text-lime-400 mx-auto mb-auto">Ótimo</h2>
-          </div>
+
+        <div className=" mr-0  bg-bl  w-[30%]">
+          {
+            rating === 0 ? (
+              <StatusRating
+                textColor="text-slate-400"
+                borderColor="border-slate-400 "
+                ratingGame={rating}
+                status={"..."}
+              />
+            ) : rating === 1 ? (
+              <StatusRating
+                textColor="text-red-600"
+                borderColor="border-red-600 "
+                ratingGame={rating}
+                status={"Péssimo"}
+              />
+            ) : rating === 2 ? (
+              <StatusRating
+                textColor=" text-red-600"
+                borderColor="border-red-600"
+                ratingGame={rating}
+                status={"Ruim"}
+              />
+            ) : rating === 3 ? (
+              <StatusRating
+                textColor="text-yellow-500"
+                borderColor="border-yellow-500 "
+                ratingGame={rating}
+                status={"Mediano"}
+              />
+            ) : rating === 4 ? (
+              <StatusRating
+                textColor="text-blue-300"
+                borderColor="border-blue-300 "
+                ratingGame={rating}
+                status={"Bom"}
+              />
+            ) : (
+              <StatusRating
+                textColor="text-lime-400"
+                borderColor="border-lime-400 "
+                ratingGame={rating}
+                status={"Ótimo"}
+              />
+            ) // para rating === 5
+          }
+
           <h1 className="mt-10 mx-auto text-xl w-64 ">
             Como você avalia este jogo?
           </h1>
           <div className="flex justify-center m-auto   w-60">
-            <StarRatings onRatingChange={handleRatingChange} ratingGame={rating}/>
+            <StarRatings
+              onRatingChange={handleRatingChange}
+              ratingGame={rating}
+            />
           </div>
         </div>
       </div>

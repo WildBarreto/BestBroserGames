@@ -69,7 +69,7 @@ export function SearchBar() {
         </button>
       </div>
       <div className="w-full h-2 bg-primary  fixed z-50 top-20" />
-      <div className="bg-slate-900  w-full flex flex-col  items-center   absolute ">
+      <div className="bg-slate-900  w-full flex flex-col  items-center   absolute zinde z-50">
         {resultados.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {resultados.map((resultado) => (

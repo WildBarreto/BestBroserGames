@@ -2,6 +2,9 @@ import PropTypes from "prop-types";
 import { FaStar } from "react-icons/fa6";
 
 export function CardGame({dataCard}) {
+  // Acessar o rating armazenado no Local Storage
+  const storedRating = localStorage.getItem(`gameRating_${dataCard.id}`);
+  const rating = storedRating ? parseInt(storedRating) : 0;
 
   return (
     <div className="flex flex-row">
@@ -25,9 +28,10 @@ export function CardGame({dataCard}) {
               <h2 className="text-slate-50 ml-2 mt-2 text-sm">{dataCard.genre}</h2>
               <div className="flex">
                 <span className="text-slate-50 mt-2 mr-1 text-1xl font-semibold">
-                  5
+                 {rating}
                 </span>
-                <FaStar className="text-yellow-300 mt-3 mr-3 size-3.5" />
+                {rating === 0 ? <FaStar className="mt-3 mr-3 size-3.5" /> : <FaStar className="mt-3 text-yellow-300 mr-3 size-3.5" />}
+                
               </div>
             </div>
           </div>
