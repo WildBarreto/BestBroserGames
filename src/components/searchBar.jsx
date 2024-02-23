@@ -3,6 +3,7 @@ import Logo from "../assets/vscode-icons_file-type-gamemaker.svg";
 
 import { IoMdSearch } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { CardGame } from "./cardGame";
 
 export function SearchBar() {
   const [termoBusca, setTermoBusca] = useState("");
@@ -33,6 +34,13 @@ export function SearchBar() {
       setResultados([]);
     }
   }, [termoBusca]);
+
+  function hanResultados (){
+    return(
+      setResultados([])
+    )
+  }
+
   return (
     <>
       <div className="mx-auto  flex flex-row h-20 w-full items-center bg-slate-900 fixed z-50 top-0">
@@ -60,26 +68,18 @@ export function SearchBar() {
           <Link to="/cadastro">Login</Link>
         </button>
       </div>
-      {resultados.length > 0 && (
-        <Link to="/game">
-          <ul className="flex flex-col  w-full  absolute">
-            {resultados.map((resultado) => (
-              <li
-                key={resultado.id}
-                className="mx-auto text-xl bg-slate-400 font-bold rounded-md mb-4"
-              >
-                <img
-                  src={resultado.thumbnail}
-                  alt=""
-                  className="rounded-t-md"
-                />
-                <h1 className="ml-4">{resultado.title}</h1>
-              </li>
-            ))}
-          </ul>
-        </Link>
-      )}
       <div className="w-full h-2 bg-primary  fixed z-50 top-20" />
+      <div className="bg-slate-900  w-full flex flex-col  items-center   absolute ">
+        {resultados.length > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {resultados.map((resultado) => (
+              <Link to={`/game/${resultado.id}`} key={resultado.id} onClick={ hanResultados}>
+                <CardGame dataCard={resultado} />
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
     </>
   );
 }
