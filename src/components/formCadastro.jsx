@@ -28,7 +28,6 @@ export function FormCadastro() {
       if (response.ok) {
         console.log("Dados salvos com sucesso!");
 
-        // Limpar os campos após o envio
         setFormData({
           nome: "",
           email: "",

@@ -12,12 +12,14 @@ export default function Home() {
       <SearchBar />
       {/*<PageGame/>*/}
       <div className="mt-32 mb-12 flex justify-center ">
-        <h1 className="ml-32 text-2xl">
+        <h1 className="mx-auto text-2xl">
           Bem-vindo à <span className="text-primary">Best Browser Games</span> a
           estrela-guia do seu mundo dos jogos.
         </h1>
       </div>
 
+      <Carrossel />
+      <Carrossel />
       <Carrossel />
     </>
   );
